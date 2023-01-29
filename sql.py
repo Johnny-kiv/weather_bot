@@ -13,15 +13,15 @@ def addInBaze(ind,name,lat,lon):
     return result"""
 src = BeautifulSoup(requests.get("https://time-in.ru/coordinates").text)
 countries= src.find("ul",class_="coordinates-list").find_all("li")
-l = 0
+id = 0
 for country in countries:
     urlc = country.find("a").get("href")
     url = BeautifulSoup(requests.get(f"{urlc}").text)
     cities = url.find("ul",class_="coordinates-items").find_all("li")
     for city in cities:
-        l+=1
+        id+=1
         name = city.find("a",class_="coordinates-items-left").text
         cord = city.find("div",class_="coordinates-items-right").text.split(",")
         #addInBaze(l,name,float(cord[0]),float(cord[1]))
-        cur.execute(f"INSERT INTO cities (nom, name, lat,lon) VALUES ({l}, {name}, {cord[0]},{cord[1]});")
-
+        cur.execute(f"INSERT INTO cities (nom, name, lat,lon) VALUES ({id}, {name}, {cord[0]},{cord[1]})")
+        conn.commit()
