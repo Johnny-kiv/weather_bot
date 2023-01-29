@@ -23,5 +23,6 @@ for country in countries:
         name = city.find("a",class_="coordinates-items-left").text
         cord = city.find("div",class_="coordinates-items-right").text.split(",")
         #addInBaze(l,name,float(cord[0]),float(cord[1]))
-        cur.execute(f"INSERT INTO cities (nom, name, lat,lon) VALUES ({id}, {name}, {cord[0]},{cord[1]})")
+        params = (id,name,cord[0],cord[1])
+        cur.execute(f"INSERT INTO cities VALUES (?, ?, ?,?)",params)
         conn.commit()
