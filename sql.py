@@ -17,12 +17,15 @@ id = 0
 for country in countries:
     urlc = country.find("a").get("href")
     url = BeautifulSoup(requests.get(f"{urlc}").text)
-    cities = url.find("ul",class_="coordinates-items").find_all("li")
-    for city in cities:
-        id+=1
-        name = city.find("a",class_="coordinates-items-left").text
-        cord = city.find("div",class_="coordinates-items-right").text.split(",")
-        #addInBaze(l,name,float(cord[0]),float(cord[1]))
-        params = (id,name,cord[0],cord[1])
-        cur.execute(f"INSERT INTO cities VALUES (?, ?, ?,?)",params)
-        conn.commit()
+    try:
+        cities = url.find("ul",class_="coordinates-items").find_all("li")
+        for city in cities:
+            id+=1
+            name = city.find("a",class_="coordinates-items-left").text
+            cord = city.find("div",class_="coordinates-items-right").text.split(",")
+            #addInBaze(l,name,float(cord[0]),float(cord[1]))
+            params = (id,name,cord[0],cord[1])
+            cur.execute(f"INSERT INTO cities VALUES (?, ?, ?,?)",params)
+            conn.commit()
+    except:
+        pass
