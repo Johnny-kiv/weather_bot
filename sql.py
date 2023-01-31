@@ -1,3 +1,4 @@
+#В этом файле я паресрю координаты в sqlite базу
 import sqlite3
 import requests
 from bs4 import BeautifulSoup
