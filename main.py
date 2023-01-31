@@ -15,4 +15,10 @@ dp = Dispatcher()
 
 async def message_hadler(mes: types.Message):
     if mes == "Добавить город":
-        pass
+        await mes.answer(text="Подождите...")
+
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
