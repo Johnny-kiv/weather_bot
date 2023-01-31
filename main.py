@@ -7,13 +7,12 @@ token = "Pogodaintheworld_bot"
 
 main_m = types.ReplyKeyboardMarkup()
 add_city = types.KeyboardButton(text="Добавить город")
-add_city = types.KeyboardButton(text="Посмотреть города")
+look_city = types.KeyboardButton(text="Посмотреть города")
 main_m.add(add_city)
 
 bot = Bot(token=token)
 dp = Dispatcher()
 
 async def message_hadler(mes: types.Message):
-    user = mes.from_user.id
     if mes == "Добавить город":
         pass
