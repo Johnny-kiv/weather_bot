@@ -24,7 +24,7 @@ async def message_hadler(mes: types.Message):
         await bot.send_message(mes.from_user.id,text="Напишите название города",reply_markup=main_m)
         choice_city(mes=mes.text)
 def choice_city(mes):
-    cur.execute(f"SELECT lat,lon from cities WHERE name = '{mes};'")
+    cur.execute(f"SELECT lat,lon from cities WHERE name = '{mes}'")
     res = cur.fetchall()
     print(res)
     #ot.send_message(mes.from_user.id, text=res, reply_markup=main_m)
