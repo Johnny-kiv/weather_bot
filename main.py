@@ -22,13 +22,12 @@ async def message_hadler(mes: types.Message):
 async def message_hadler(mes: types.Message):
     if mes.text == "Добавить город":
         await bot.send_message(mes.from_user.id,text="Напишите название города",reply_markup=main_m)
-        choice_city(mes=mes.text,user=mes.from_user.id)
-@dp.message_handler()
-def choice_city(mes,user):
-    cur.execute(f"SELECT lat,lon from cities WHERE name = '{mes}' GROUP BY name")
-    res = cur.fetchall()
-    print(res)
-    bot.send_message(user, text=str(res), reply_markup=main_m)
+        cur.execute(f"SELECT lat,lon from cities WHERE name = '{types.Message.text}' GROUP BY name")
+        res = cur.fetchall()
+        print(res)
+        await bot.send_message(mes.from_user.id, text=str(res), reply_markup=main_m)
+
+
 
 
 if __name__ == "__main__":
