@@ -13,19 +13,13 @@ main_m.add(add_city,look_city)
 
 bot = Bot(token=token)
 dp = Dispatcher(bot=bot)
-
+src =
 @dp.message_handler(commands=['start'])
 async def message_hadler(mes: types.Message):
     await bot.send_message(mes.from_user.id,text="Привет",reply_markup=main_m)
-
 @dp.message_handler()
 async def message_hadler(mes: types.Message):
-    if mes.text == "Добавить город":
-        await bot.send_message(mes.from_user.id,text="Напишите название города",reply_markup=main_m)
-        cur.execute(f"SELECT lat,lon from cities WHERE name = '{types.Message.text}' GROUP BY name")
-        res = cur.fetchall()
-        print(res)
-        await bot.send_message(mes.from_user.id, text=str(res), reply_markup=main_m)
+
 
 
 
