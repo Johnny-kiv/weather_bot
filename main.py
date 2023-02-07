@@ -15,7 +15,6 @@ main_m.add(add_city,look_city)
 
 bot = Bot(token=token)
 dp = Dispatcher(bot=bot)
-src =
 @dp.message_handler(commands=['start'])
 async def message_hadler(mes: types.Message):
     await bot.send_message(mes.from_user.id,text="Привет! Напиши город",reply_markup=main_m)
