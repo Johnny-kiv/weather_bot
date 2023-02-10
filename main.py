@@ -1,10 +1,6 @@
 import bs4
 import requests
 from aiogram import Bot,Dispatcher,types,executor
-import sqlite3
-
-conn = sqlite3.connect("pogoda")
-cur = conn.cursor()
 
 token = "5964365949:AAHCk4qPSpRkhLEkZ10CjPswy_gpBeb2ksk"
 bot = Bot(token=token)
