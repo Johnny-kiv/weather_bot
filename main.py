@@ -11,7 +11,7 @@ async def message_hadler(mes: types.Message):
 @dp.message_handler()
 async def message_hadler(mes: types.Message):
     src = bs4.BeautifulSoup(requests.get(f"https://translate.yandex.ru/?from=tableau_yabro&source_lang=ru&target_lang=en&text={mes.text}").text)
-    await bot.send_message(mes.from_user.id,str(src))
+    print(src)
 
 
 
